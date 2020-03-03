@@ -1,0 +1,14 @@
+<div>
+  <div class="acoes" *ngIf="(acoesMovimentacao$ | async) as acoesMovimentacao">
+
+    <div *ngFor="let acaoMovimentacao of acoesMovimentacao">
+      
+      <button type="button" mat-raised-button [color]="acaoMovimentacao.style"
+        (click)="movimentarPedidoSelecionado(acaoMovimentacao.acaoSituacao)">
+        <mat-icon>{{acaoMovimentacao.icone}}</mat-icon>
+        {{acaoMovimentacao.acaoDescricao}}
+      </button>
+    </div>
+
+  </div>
+</div>

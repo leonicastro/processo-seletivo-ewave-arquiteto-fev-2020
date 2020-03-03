@@ -1,0 +1,60 @@
+<div class="page">
+  <div class="content-comandas">
+    <div class="titulo">
+      <a routerLink="/home" mat-raised-button>
+        <mat-icon>arrow_back_ios</mat-icon>
+        Voltar
+      </a>
+      <h1>
+        Lista de comandas abertas
+      </h1>
+    </div>
+    <div class="acoes">
+      <form class="form-pesquisa-comanda">
+        <mat-form-field class="campo-pesquisa-comanda">
+          <mat-label>Pesquisa pelo número da mesa</mat-label>
+          <input matInput type="search" [formControl]="pesquisa" />
+          <button
+            type="button"
+            mat-button
+            *ngIf="pesquisa.value"
+            matSuffix
+            mat-icon-button
+            (click)="limparCampoDePesquisa()"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </form>
+      <a mat-raised-button color="primary" routerLink="cadastro">
+        Abrir comanda
+      </a>
+    </div>
+  </div>
+  <div class="container" *ngIf="comandasAbertas$ | async as comandas">
+    <div class="lista-comandas" *ngFor="let comanda of comandas">
+      <a [routerLink]="['/comandas', comanda.id, 'detalhes']">
+        <mat-card class="card-comanda">
+          <div class="numero">
+            <div mat-card-avatar class="numero-mesa">
+              <span>{{ comanda.numeroMesa }}</span>
+            </div>
+          </div>
+          <div class="detalhes">
+            <div class="titulo">Detalhes</div>
+            <div class="informacoes">
+              <div class="data-criada"><span>Criada em:</span>{{ comanda.dataCricao | date }}</div>
+              <div class="data-alteracao">
+                <span>Última Alteração:</span> {{ comanda.dataUltimaAlteracao | date }}
+              </div>
+              <div class="numero-pedidosF"><span>Pedidos:</span>{{ comanda.pedidos.length }}</div>
+            </div>
+          </div>
+        </mat-card>
+      </a>
+    </div>
+    <div class="no-results" *ngIf="comandas.length === 0">
+      Nenhuma comanda aberta
+    </div>
+  </div>
+</div>

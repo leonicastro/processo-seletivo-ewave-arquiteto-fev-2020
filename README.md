@@ -1,59 +1,98 @@
-# **Processo Seletivo Arquiteto de Software - Ewave**
+# Processo Seletivo Arquiteto de Software - Ewave
 
-### Bem-vindo ao processo seletivo para arquiteto de software da Ewave/TJMT de fevereiro de 2020!
+Prova de conceito para gerenciar pedidos de um restaurante.  
+O foco principal é a automação do tramite de pedidos entre garçom e cozinha
 
-**Desafio**
+## Funcionalidades
 
-Ajude o restaurante &quot;Favo de Mel&quot; a gerenciar o atendimento ao cliente, pois o mesmo está tendo sérios problemas com isso. Os problemas são: pedidos são feitos e muitas vezes o mesmo não chega a cozinha, clientes cancelam pedido e a cozinha não recebe o aviso e acaba preparando o mesmo, os pedidos estão demorando para serem entregues ou muitas vezes estão entregando pedido fora de ordem sem priorização.
+- Seleção de Perfil
 
-Como esse fluxo hoje é manual e devido a correria dos funcionários para tentar atender os clientes, a comunicação entre eles acaba sendo ineficiente, causando esses gargalos.
+  - Garçom
+  - Cozinha
 
-Para resolver os principais problemas foi solicitado a criação de uma nova ferramenta que atenda no mínimo os requisitos abaixo:
+- Criação e visualização de comandas (Perfil Garçom)
 
-- Garçom: visualizar comandas abertas, abrir comanda, adicionar pedido a comanda, cancelar pedido da comanda, acompanhar o status de um pedido na cozinha e fechar a comanda;
-- Cozinha: visualizar, receber e entregar o pedido pronto para o garçom.
+  - Filtro de comanda por número da mesa
 
-Além dos requisitos mínimos acima, deixamos por opção livre a implementação de alguns requisitos que seriam interessantes para o restaurante, são eles:
+- Criação e visualização de pedidos por comanda (Perfil Garçom)
 
--  Notificação ativa entre o garçom e a cozinha ou vice-versa;
--  Garçom poder visualizar o andamento de preparo dos pedidos de uma comanda;
--  Repriorização de ordem de preparo dos pedidos pela cozinha.
+  - Visualização do situação atual do pedido
 
-Sinta-se livre para adicionar novas funcionalidades que agregam valor ao restaurante.
+- Visualização de pedidos por situação (Perfil Cozinha)  
+  Pedidos para cozinha estarão nas situações: Aguardando Recebimento e Recebido
 
-**Restrições**
+- Movimentação de pedidos  
+  O pedido transitará por situações desde a sua criação pelo garçom, preparo pela cozinha, até a entrega para o cliente.
 
-Utilizar **.NET Core** no back-end e no front-end, o framework **Angular** (com programação reativa). Criar uma solução escalável através de contêinerização via **Docker** com orquestração dos serviços com **Docker Compose**.
+- Alertas de notificação
+  - A cozinha receberá um alerta toda vez que um pedido for aberto ou cancelado
+  - O garçom receberá um alerta quando a cozinha receber o pedido e quando terminar o preparo.
 
-Quanto à segurança, sua solução será inicialmente pública, você está construindo um MVP, não se preocupe com isso.
+## Executando o projeto
 
-Queremos documentação, acerca das decisões que você tomou para sua solução, mesmo nos casos em que você não tenha realizado tudo que pretendia, pode citar qual era o objetivo final e relacione com o que você conseguiu entregar no prazo e o porquê. Documentações arquiteturais também são importantes, estas podem ser feitas inclusive no próprio código fonte para facilitar com o **Swagger**.
+- Para executar o projeto, você precisará ter o [docker](https://www.docker.com/) instalado.
+- Certifique-se também de que as portas `5555`, `5000`, `3010` e `27017` estão liberadas.
 
-**Diferenciais**
+#### No seu terminal execute o comando:
 
-- Kubernetes
-- DDD
-- CQRS
-- Event Sourcing
-- TDD
-- REST ou gRPC
-- Mensageria
-- Serviço de cache
+```
+docker-compose up --build
+```
 
-**Critérios de avaliação**
+Após a finalização do build, você pode acessar clicando [aqui](http://localhost:5555/) .
 
-- Arquitetura desenvolvida
-- Organização do código
-- Proatividade
-- Interpretação textual
-- Documentação do projeto (README.md)
+## Tecnologias e Frameworks utilizados nos projetos
 
-**Procedimento**
+### Front-end
 
-Faça um fork do projeto: [https://github.com/douglas-tsc/processo-seletivo-ewave-arquiteto-fev-2020](https://github.com/douglas-tsc/processo-seletivo-ewave-arquiteto-fev-2020)
+> Projeto 100% reatitivo com toda responsabilidade de regra de negócio e funcionalidades deixados para o gerenciamento de estado lidar.
 
-Ao finalizar a sua aplicação, crie um pull request no projeto de origem.
+- Angular 9
+- RxJS
+- Ngrx (Gerenciamento de estado)
+- ngx-socket-io (Biblioteca Socket.IO para Angular)
+- Angular Material Design
 
-**Prazo**
+### Back-end
 
-O prazo para criar o pull request é **10 dias corridos** após a aprovação da **Inscrição** [Vaga Ewave](https://vagasewave.gupy.io/jobs/175024).
+> Foi optado por uma implementação simples para fornecer uma API funcional e performática.
+
+- .NET Core 3.1
+- Xunit, Moq, FluentAssertions
+
+### Banco de dados
+
+- mongodb
+
+> A escolha de utilização do mongodb coincide com a escolha da implementação do backend simples e performático.  
+Com o mongo não houve necessidade de implementação de mapeamentos de ORM, nem de criação de scripts de tabelas, nem migrations. E sem deixar a performance comprometida.
+
+### Realtime
+
+- Javascript
+- ExpressJS
+- Socket IO
+
+> Foi criado um 'micro service' em NodeJS para comunicação em tempo real com o frontend.
+> A escolha dessa tecnologia deve-se a compatibilidade com a biblioteca SocketIO do frontend. E Também a rápida e fácil implementação.
+
+## Features a serem implementadas
+
+### Funcionalidades
+
+- Cadastro de produtos/pratos
+- Criar acesso do garçom para vincular a comanda ao garçom.
+- Cancelamento de Pedido e Fechamento de comanda
+- Adiconar observação ao pedido recusado
+- Notificar garçom sobre o andamento do pedido
+ 
+
+### Front-end
+
+- Testes unitários
+- Melhoria de layout e usabilidade
+
+### Back-end
+
+- Implementação de Command Pattern
+- Implementação do Publicador de Mensagens com RabbitMQ

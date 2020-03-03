@@ -1,0 +1,54 @@
+<div class="page" *ngIf="comanda$ | async as comanda">
+  <div class="content-cadastro">
+    <div class="titulo">
+      <a routerLink="/comandas" mat-raised-button>
+        <mat-icon>arrow_back_ios</mat-icon>
+        Voltar
+      </a>
+      <h1>
+        Detalhes da comanda
+      </h1>
+    </div>
+    <div class="acoes">
+      <app-movimentador-pedido></app-movimentador-pedido>
+      <a
+        mat-raised-button
+        color="primary"
+        class="btn-novo-pedido"
+        [routerLink]="['/pedidos/comanda', comanda.id, 'cadastro-pedido']"
+      >
+        Realizar pedido
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Mesa {{ comanda.numeroMesa }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <h3 mat-subheader><mat-icon>receipt</mat-icon> Pedidos</h3>
+          <mat-list-item
+            class="pedido"
+            *ngFor="let pedido of comanda.pedidos"
+            (click)="selecionarPedido(pedido)"
+          >
+            <mat-icon mat-list-icon>check</mat-icon>
+            <h4 mat-line>{{ pedido.nome }}</h4>
+            <p mat-line>Quantidade: {{ pedido.quantidade }}</p>
+            <p mat-line>Observação: {{ pedido.observacao }}</p>
+            <p mat-line>
+              Última Alteração: {{ pedido.dataUltimaAlteracao | date }}
+            </p>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions>
+        <app-movimentador-pedido></app-movimentador-pedido>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

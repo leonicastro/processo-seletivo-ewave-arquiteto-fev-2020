@@ -1,0 +1,64 @@
+.content-cadastro {
+  & {
+    margin-bottom: 30px;
+  }
+  .titulo {
+    & {
+      display: flex;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #dedede;
+    }
+    h1 {
+      margin: 0;
+      margin-top: 5px;
+      margin-left: 15px;
+    }
+  }
+}
+.mat-card {
+  & {
+    border-radius: 5px;
+    padding: 0px !important;
+    -webkit-box-shadow: 2px 4px 7px 1px rgba(184, 184, 184, 1);
+    -moz-box-shadow: 2px 4px 7px 1px rgba(184, 184, 184, 1);
+    box-shadow: 2px 4px 7px 1px rgba(184, 184, 184, 1);
+  }
+  ::ng-deep .mat-card-header-text {
+    margin: 0px;
+  }
+  .mat-card-header {
+    & {
+      background-color: #595959 !important;
+      color: #ffffff !important;
+    }
+  }
+  .mat-card-title {
+    margin-bottom: 0px !important;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  .mat-card-content {
+    & {
+      display: flex;
+      flex-direction: column;
+      margin: 15px;
+      font-size: 16px;
+    }
+    .item {
+      & {
+        margin: 5px 0;
+      }
+      span {
+        font-weight: bold;
+        padding-right: 5px;
+      }
+    }
+  }
+
+  .mat-card-actions {
+    margin: 0px !important;
+    padding: 15px;
+  }
+}

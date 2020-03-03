@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FavoDeMel.Infrastructure.Data\FavoDeMel.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\FavoDeMel.Infrastructure.Notifyer\FavoDeMel.Infrastructure.Notifyer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.6.1" />
+    <PackageReference Include="MongoDB.Bson" Version="2.10.2" />
+  </ItemGroup>
+
+</Project>

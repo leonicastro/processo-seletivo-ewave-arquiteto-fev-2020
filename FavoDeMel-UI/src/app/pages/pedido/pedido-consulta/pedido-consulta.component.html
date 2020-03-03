@@ -1,0 +1,43 @@
+<div class="page">
+  <div class="content-pedidos">
+    <div>
+      <div class="titulo">
+        <a routerLink="/home" mat-raised-button>
+          <mat-icon>arrow_back_ios</mat-icon>
+          Voltar
+        </a>
+        <h1>
+          Pedidos aguardando recebimento da cozinha
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div *ngIf="pedidosAguardandoRecebimento$ | async as pedidos">
+      <div class="notificacao">
+        <i class="material-icons" [ngClass]="{ 'has-itens': (alertNotificacoes$ | async) > 0 }">
+          notification_important
+          <span class="qnt">{{ alertNotificacoes$ | async }}</span>
+        </i>
+      </div>
+
+      <div class="lista-pedidos" *ngFor="let pedido of pedidos">
+        <a [routerLink]="[pedido.id, 'detalhes']">
+          <mat-card class="card-pedido">
+            <mat-card-header>
+              <div>
+                <span>{{ pedido.nome }}</span>
+                <span class="tag-situacao" [ngClass]="'color' + pedido.situacao">
+                  {{ pedido.situacao | situacaoPedido }}
+                </span>
+              </div>
+            </mat-card-header>
+          </mat-card>
+        </a>
+      </div>
+      <div class="no-results" *ngIf="pedidos.length === 0">
+        Nenhum pedido realizado
+      </div>
+    </div>
+  </div>
+</div>

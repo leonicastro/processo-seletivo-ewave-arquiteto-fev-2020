@@ -1,0 +1,108 @@
+.mat-card {
+  & {
+    border-radius: 5px;
+    padding: 0px !important;
+    -webkit-box-shadow: 2px 4px 7px 1px rgba(184, 184, 184, 1);
+    -moz-box-shadow: 2px 4px 7px 1px rgba(184, 184, 184, 1);
+    box-shadow: 2px 4px 7px 1px rgba(184, 184, 184, 1);
+  }
+  ::ng-deep .mat-card-header-text {
+    margin: 0px;
+  }
+  .mat-card-header {
+    & {
+      background-color: #0a1207 !important;
+      color: #a08752 !important;
+    }
+  }
+  .mat-card-title {
+    margin-bottom: 0px !important;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 15px;
+  }
+
+  .mat-card-content {
+    & {
+      margin: 15px;
+    }
+    h2.descricao {
+      font-weight: normal;
+      font-size: 22px;
+      color: #737373;
+      padding-top: 16px;
+      text-align: center;
+    }
+    h1.titulo {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 30px;
+      font-weight: 300;
+      color: #595959;
+      padding: 15px 0;
+    }
+  }
+
+  .mat-card-actions {
+    margin: 0px !important;
+    padding: 15px;
+  }
+
+  .content {
+    & {
+      margin-top: 15px;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+
+    .conteudo-central {
+      display: flex;
+      justify-content: center;
+
+      .lista-cards {
+        display: inline-flex;
+
+        a {
+          margin-right: 22px;
+        }
+
+        .card {
+          width: 350px;
+          height: 170px;
+
+          &.selectable {
+            transition: all 0.25s ease-in-out;
+            &:hover {
+              box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3) !important;
+            }
+          }
+
+          .card-body {
+            text-align: left;
+            color: #777;
+            padding: 10px 20px;
+            height: calc(100% - 42px);
+            position: relative;
+
+            .perfil {
+              position: absolute;
+              color: gray;
+              font-weight: 300;
+              font-size: 32px;
+              transform: translate(50%, 50%);
+              margin: 0 14px;
+            }
+
+            img {
+              position: absolute;
+              transform: translate(50%, 50%);
+              width: 85px;
+              margin: 0 60px;
+              filter: opacity(0.2);
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    ports:
+      - '27017:27017'
+  notifyer:
+    container_name: notifyer
+    restart: always
+    build: ./FavoDeMel-Notifyer/
+    ports:
+      - '3010:3000'
+    volumes:
+      - ./FavoDeMel-Notifyer/:/usr/app
+      - /usr/app/node_modules
+  backend:
+    container_name: backend
+    restart: always
+    build: ./FavoDeMel-API/
+    ports:
+      - '5000:80'
+    depends_on:
+      - mongodb
+      - notifyer
+  frontend:
+    container_name: frontend
+    build: ./FavoDeMel-UI/
+    ports:
+      - '5555:80'

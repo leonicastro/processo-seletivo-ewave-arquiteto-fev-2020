@@ -1,0 +1,48 @@
+<div class="page">
+  <div class="content-cadastro">
+    <div class="titulo">
+      <a routerLink="/pedidos" mat-raised-button>
+        <mat-icon>arrow_back_ios</mat-icon>
+        Voltar
+      </a>
+      <h1>
+        Realizar pedido
+      </h1>
+    </div>
+  </div>
+  <div class="container">
+    <form style="margin-top:15px" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form-group md-12">
+        <mat-form-field style="width: 100%;">
+          <mat-label>Pedido</mat-label>
+          <input matInput id="nome" formControlName="nome" type="text" />
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%;">
+          <mat-label>Quantidade</mat-label>
+          <input
+            matInput
+            id="quantidade"
+            formControlName="quantidade"
+            type="number"
+          />
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%;">
+          <mat-label>Observação</mat-label>
+          <input
+            matInput
+            id="observacao"
+            formControlName="observacao"
+            type="text"
+          />
+        </mat-form-field>
+      </div>
+      <footer>
+        <button type="submit" class="btn btn-success">
+          Realizar pedido
+        </button>
+      </footer>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+.content-comandas {
+  & {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #dedede;
+    padding-bottom: 15px;
+  }
+  .titulo {
+    & {
+      display: flex;
+      flex: 1;
+      align-items: center;
+    }
+    h1 {
+      margin: 0;
+      margin-top: 5px;
+      margin-left: 15px;
+    }
+  }
+  .acoes {
+    & {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .form-pesquisa-comanda {
+      max-width: 500px;
+      width: 100%;
+      margin: 0 30px;
+      .campo-pesquisa-comanda {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.container {
+  & {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 15px;
+  }
+  .lista-comandas {
+    & {
+      transition: all 0.25s ease-in-out;
+    }
+    &:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3) !important;
+    }
+  }
+}
+
+.numero-mesa {
+  & {
+    background-color: #e4e4e4;
+  }
+
+  span {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 10px 6px;
+    position: relative;
+    display: block;
+  }
+
+  &:before {
+    content: "Mesa nº";
+    width: 61px;
+    font-size: 12px;
+    position: absolute;
+    font-weight: bold;
+    margin: -15px 2px;
+  }
+}
+
+.card-comanda {
+  & {
+    display: flex;
+    transition: all linear 0.25ms;
+    align-content: space-between;
+  }
+  &:hover {
+    background-color: #ebebeb;
+  }
+
+  &.selected {
+    background-color: #d8dae4;
+  }
+
+  .numero {
+    & {
+      margin-right: 15px;
+    }
+    .mat-card-avatar {
+      display: flex;
+    }
+  }
+  .detalhes {
+    & {
+      display: flex;
+      flex-direction: column;
+    }
+    .titulo {
+      font-weight: bold;
+      margin-bottom: 5px;
+      border-bottom: 1px solid #e2e2e2;
+      font-size: 16px;
+    }
+    .informacoes {
+      & {
+        display: flex;
+        flex-direction: column;
+      }
+      span {
+        font-weight: bold;
+        margin-right: 15px;
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<div class="container">
+  <mat-card style="height: 500px;">
+    <mat-card-content>
+      <h2 class="descricao">
+        Bem-vindo ao gerenciamento de pedidos da Churrascaria Favo de Mel.
+      </h2>
+      <h1 class="titulo">Selecione o perfil</h1>
+    </mat-card-content>
+    <mat-card-actions>
+      <section class="content">
+        <article class="conteudo-central">
+
+          <div class="lista-cards">
+            <a routerLink="/comandas" tabindex="0">
+              <div class="card success selectable">
+                <div class="card-header" style="background-color: #3f51b5;"></div>
+                <div class="card-body">
+                  <span class="perfil">Garçom</span>
+                  <img src="../../../assets/img/icongarcom.png">
+                </div>
+              </div>
+            </a>
+
+            <a routerLink="/pedidos" tabindex="1">
+              <div class="card success selectable">
+                <div class="card-header" style="background-color: #3f51b5;"></div>
+                <div class="card-body">
+                  <span class="perfil">Cozinha</span>
+                  <img src="../../../assets/img/iconcozinha.png">
+                </div>
+              </div>
+            </a>
+          </div>
+
+        </article>
+      </section>
+    </mat-card-actions>
+  </mat-card>
+</div>

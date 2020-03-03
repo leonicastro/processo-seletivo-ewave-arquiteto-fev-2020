@@ -1,0 +1,35 @@
+.tag-situacao {
+  border-radius: 1em;
+  padding: 2px 8px;
+  border: 1px solid;
+  font-size: 12px;
+  position: absolute;
+  right: 10px;
+
+  &.color1 {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+  }
+  &.color2 {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+  }
+  &.color3 {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+  }
+  &.color4 {
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+  }
+  &.color5,
+  &.color6 {
+    color: #383d41;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+  }
+}
